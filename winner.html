@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>LOTTOSCAPE</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header>
+    <button class="button connect-wallet">Connect Wallet</button>
+    <div class="container header-wrapper">
+      <a class="site-logo site-title" href="#">
+        <img src="images/logo.png" alt="site-logo" data-image-blur-on-load-update-occured="true">
+      </a>
+    </div>
+  </header>
+  <section id="gameStats" class="section dark-blue _50-top-padding" style="">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <div class="title-container">
+          <h4>Game Countdown</h4>
+          <div class="border-title">
+            <span id="timer">00:00</span>
+          </div>
+        </div>
+        <div class="title-container">
+          <label>Next Lottery</label>
+          <h4><span id="nextProfit">0.00</span> BNB</h4>
+          <div class="border-title">
+            ROUND: <strong id="round-number">1</strong>
+          </div>
+        </div>
+      </div>
+      <div class="stake-container">
+        <button class="button stake-button disabled" onClick="stake()" disabled>Add My Stake</button>
+        <div class="balance-wrapper">
+          <label>Your Current Stake</label>
+          <h4><span id="myBalance">0.00</span> BNB</h4>
+        </div>
+      </div>
+      <div id="gameStatsWinners" class="winners">
+        <div class="last-voters-wrapper">
+          <div class="last-7">
+            <div class="p-absolute">Last 5 buyers</div>
+            <div class="buyer-container">
+              <div class="table-info">
+                <div class="address-label">Player Address</div>
+                <div class="date-label">Buy Time</div>
+                <div class="amount-tokens__label">Tokens Bought</div>
+                <div class="win-amount__label">Will Win</div>
+              </div>
+              <div class="last__seven-buyers buyer-0">
+                <a id="buyer0Address" href="https://bscscan.com/address/0xB3AC091c400CDfc867D28bBb0f25B1BEF87FF424" class="token-address">No Buyer</a><a id="buyer0BuyDate" href="#" class="buy__date">No Buyer</a>
+                <div id="buyer0Tokens" class="tokens-bought">No Buyer</div>
+                <div id="buyer0Win" class="win-text">No Buyer</div>
+              </div>
+              <div class="last__seven-buyers buyer-1">
+                <a id="buyer1Address" href="#" class="token-address">No Buyer</a><a id="buyer1BuyDate" href="#" class="buy__date">No Buyer</a>
+                <div id="buyer1Tokens" class="tokens-bought">No Buyer</div>
+                <div id="buyer1Win" class="win-text">No Buyer</div>
+              </div>
+              <div class="last__seven-buyers buyer-2">
+                <a id="buyer1Address" href="#" class="token-address">No Buyer</a><a id="buyer1BuyDate" href="#" class="buy__date">No Buyer</a>
+                <div id="buyer1Tokens" class="tokens-bought">No Buyer</div>
+                <div id="buyer1Win" class="win-text">No Buyer</div>
+              </div>
+              <div class="last__seven-buyers buyer-3">
+                <a id="buyer1Address" href="#" class="token-address">No Buyer</a><a id="buyer1BuyDate" href="#" class="buy__date">No Buyer</a>
+                <div id="buyer1Tokens" class="tokens-bought">No Buyer</div>
+                <div id="buyer1Win" class="win-text">No Buyer</div>
+              </div>
+              <div class="last__seven-buyers buyer-4">
+                <a id="buyer1Address" href="#" class="token-address">No Buyer</a><a id="buyer1BuyDate" href="#" class="buy__date">No Buyer</a>
+                <div id="buyer1Tokens" class="tokens-bought">No Buyer</div>
+                <div id="buyer1Win" class="win-text">No Buyer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amount modal-->
+  <div class="modal fade" id="amountModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please input amount of token!</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="number" class="form-control" id="amount" placeholder="amount" min="100000" value="100000">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="buyTicket()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast mt-3">
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
+
+</body>
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+<script src="main.js"></script>
+</html>

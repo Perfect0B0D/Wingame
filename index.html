@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <!-- Meta -->
+  <title>FootballStar Game</title>
+  <meta
+    name="description"
+    content="FootballStar Simple Game"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1" />
+  <meta name="theme-color" content="#1FC7D4" />
+  <meta name="twitter:image" content="https://footballstars.io/" />
+  <meta
+    name="twitter:description"
+    content="Earn the FTS via game. Let's start!"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FootballStar game run on Binance Smart Chain (BSC)" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- sweet alert -->
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert.min.css">
+
+
+
+</head>
+<body>
+  <header>
+
+    <div class="btn-connect">
+      <span class="hidden" id="chainType"></span>
+      <button class="button connect-wallet description">Connect Wallet</button>
+    </div>
+
+    <div id="prize-counter">
+      <p class="font-awesome font-big description">&nbsp;&nbsp;Your BNB BALANCE</p>
+      <div id="prize-panel">
+        <h3 class="font-size-3 description" id="myBalance">0</h3>
+        <p class="description">BNB</p>
+      </div>
+    </div>
+    
+    
+    <div class="container header-wrapper">
+      <!-- <h3 class="title white">FootballStars Simple Game</h3> -->
+      <img src='images/logo.png' id="img-logo"/>
+    </div>
+  </header>
+  <section >
+    <div class="container justify-center" id="main-section">
+        <h3 class="description">The Clock Is Running Down!</h3>
+        <div id="timer-discounter" class="flex">
+          <div class="between">
+          </div>
+          
+          <div class="between">
+          </div>
+          
+          <div class="timer">
+            <span id="minutes">00</span>
+          </div>
+          <div class="timer">
+            <span id="seconds">00</span>
+          </div>
+          <div class="between">
+          </div>
+          <div class="between">
+          </div>
+        </div>
+        <!-- <h3 class="title">FootballStars Simple Game</h3> -->
+
+        <!-- <h3 class="title description"></h3> -->
+        <p class="uppercase bold description">Buy $FTS To Take Possession of the Ball!</p>
+        <p class="uppercase bold description">If Someone Steals The Ball, You Must Reclaim Possession Before The New Timer Runs Out!</p>
+        <p class="uppercase bold description">Maintain Possession & Run Out The Clock To Win!</p>  
+        <p class="bnb-title description bold uppercase">PRIZE COUNTER: <span id="bnb-value">0</span>BNB</p>
+        <p class="uppercase bold description">Prize Counter Increases By 1% Based On The Amount Of Each Transaction</p>  
+
+        <input id="bnb-input" class="bold"  placeholder="ENTER BNB AMOUNT" />
+        <button class="button btn-buy description" onclick="buyToken()">BUY $FTS</button>
+        <p class="uppercase bold description mt-1">0.1 BNB MINIMUM TO ENTER</p>  
+
+        <!-- <p>Are you a winner?</p><p>If you win the game, you will get 1% profilts of deposit amount. </p>
+        <p>And the prize increase by 1% each purchase.</p>
+        <p>For example. 1% of 5BNB is 0.05BNB</p>
+        <div class="number-list-wrapper hidden">
+          <h4>Your Wallet have <span id="ticket-amount">0</span> tickets!</h4>
+        </div>
+        <h4>Your wallet have <span id="myBalance">0</span> BNB!</h4>
+        <input type="won_adr" class="form-control mt-30 mb-30" name="check-snumber1" id="check-wallet" placeholder="Enter BNB Amount"> -->
+        <!-- <button type="button" class="cmn-btn" onclick="checkWin();" disabled>Buy FTS</button> -->
+      </div>
+      <div id="footer">
+        <div class="footer-cont1">
+          <p class="bnb-title description bold uppercase margin-0">$FTS PRICE</p>
+          <p class="ftx-price description margin-0" ><span id="ftx-price">0.000000000</span>$</p>
+        </div>
+        
+        <div class="footer-cont2">
+          <p class="margin-0 uppercase bold description white">All right reserved</p>
+
+          <p class="uppercase bold description white"><a class="white" onclick="goFootball()">footballstar.io</a></p>
+        </div>
+      </div>
+      </div>
+      <!-- Toast Notification -->
+  <div class="toast mt-3">
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
+  </section>
+</body>
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+<script src="main.js"></script>
+<script type="text/javascript" src="bignumber.js"></script>
+</html>
+
+
